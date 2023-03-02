@@ -1,5 +1,5 @@
 .wrapper {
-  --columns: 3;
+  --columns: 4;
 
   width: fit-content;
   display: grid;

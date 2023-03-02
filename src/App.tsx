@@ -16,6 +16,9 @@ function App() {
 			content: '3',
 		},
 		{
+			content: '*',
+		},
+		{
 			content: '4',
 		},
 		{
@@ -23,6 +26,9 @@ function App() {
 		},
 		{
 			content: '6',
+		},
+		{
+			content: '/',
 		},
 		{
 			content: '7',
@@ -34,18 +40,21 @@ function App() {
 			content: '9',
 		},
 		{
-			content: '0',
+			content: '+',
 		},
 		{
-			content: '+',
+			content: 'CE',
+			func: clear,
+		},
+		{
+			content: '0',
 		},
 		{
 			content: '=',
 			func: equal,
 		},
 		{
-			content: 'CE',
-			func: clear,
+			content: '-',
 		},
 	]
 
