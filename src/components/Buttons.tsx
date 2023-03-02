@@ -1,14 +1,15 @@
+import { MouseEvent } from 'react'
 import styles from './styles/Buttons.module.css'
 
-export default function Buttons({ buttons }: ButtonsProps) {
-	function defaultOperation() {
-		console.log('hgeuyi')
-	}
-
+export default function Buttons({ buttons, defaultFunction }: ButtonsProps) {
 	return (
 		<div className={styles.wrapper}>
-			{buttons.map((button) => (
-				<button onClick={button.func ? button.func : defaultOperation}>{button.content}</button>
+			{buttons.map((button, i) => (
+				<button
+					key={i}
+					onClick={button.func ? button.func : defaultFunction}>
+					{button.content}
+				</button>
 			))}
 		</div>
 	)
@@ -16,6 +17,7 @@ export default function Buttons({ buttons }: ButtonsProps) {
 
 interface ButtonsProps {
 	buttons: Button[]
+	defaultFunction: (event: MouseEvent) => void
 }
 
 export type Button = {

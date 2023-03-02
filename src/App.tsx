@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react'
 import styles from './App.module.css'
 import Buttons, { Button } from './components/Buttons'
 
@@ -44,6 +45,11 @@ function App() {
 		},
 	]
 
+	function normalOperation(event: MouseEvent) {
+		const elem = event.target as HTMLButtonElement
+		console.log(elem.textContent)
+	}
+
 	return (
 		<>
 			<main className={styles.wrapper}>
@@ -54,7 +60,10 @@ function App() {
 						className={styles.output}
 						placeholder='somehting'
 					/>
-					<Buttons buttons={buttons} />
+					<Buttons
+						defaultFunction={normalOperation}
+						buttons={buttons}
+					/>
 				</div>
 			</main>
 		</>
