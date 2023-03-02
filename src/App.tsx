@@ -1,8 +1,10 @@
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
 import styles from './App.module.css'
 import Buttons, { Button } from './components/Buttons'
 
 function App() {
+	const [input, setInput] = useState<string | null>('')
+
 	const buttons: Button[] = [
 		{
 			content: '1',
@@ -39,15 +41,27 @@ function App() {
 		},
 		{
 			content: '=',
-			func() {
-				console.log('=')
-			},
+			func: equal,
+		},
+		{
+			content: 'CE',
+			func: clear,
 		},
 	]
 
 	function normalOperation(event: MouseEvent) {
 		const elem = event.target as HTMLButtonElement
-		console.log(elem.textContent)
+
+		if (input === null) setInput(elem.textContent)
+		else setInput(input + elem.textContent)
+	}
+
+	function equal() {
+		setInput(Function('return ' + input)())
+	}
+
+	function clear() {
+		setInput(null)
 	}
 
 	return (
@@ -55,10 +69,10 @@ function App() {
 			<main className={styles.wrapper}>
 				<div className={styles.calculatorContainer}>
 					<input
+						value={input ? input : '0'}
 						type='text'
 						disabled
 						className={styles.output}
-						placeholder='somehting'
 					/>
 					<Buttons
 						defaultFunction={normalOperation}
