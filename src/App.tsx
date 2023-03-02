@@ -47,8 +47,15 @@ function App() {
 	return (
 		<>
 			<main className={styles.wrapper}>
-				<p></p>
-				<Buttons buttons={buttons} />
+				<div className={styles.calculatorContainer}>
+					<input
+						type='text'
+						disabled
+						className={styles.output}
+						placeholder='somehting'
+					/>
+					<Buttons buttons={buttons} />
+				</div>
 			</main>
 		</>
 	)
