@@ -24,6 +24,7 @@
 .output,
 .output:disabled {
   width: 100%;
+  font-size: 2rem;
   padding: 1rem 2rem;
   background: none;
   border: 2px solid white;

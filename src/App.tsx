@@ -1,9 +1,11 @@
 import { MouseEvent, useState } from 'react'
 import styles from './App.module.css'
 import Buttons, { Button } from './components/Buttons'
+import { arithmeticFunc } from './utils/systemwork'
 
 function App() {
 	const [input, setInput] = useState<string | null>('')
+	const arithmeticArr = ['/', '-', '*', '+']
 
 	const buttons: Button[] = [
 		{
@@ -60,9 +62,17 @@ function App() {
 
 	function normalOperation(event: MouseEvent) {
 		const elem = event.target as HTMLButtonElement
+		const lastPressedButton = elem.textContent
 
-		if (input === null) setInput(elem.textContent)
-		else setInput(input + elem.textContent)
+		for (let i = 0; i >= arithmeticArr.length; i++) {
+			if (lastPressedButton == arithmeticArr[i]) {
+				arithmeticFunc(arithmeticArr, lastPressedButton, setInput, input)
+				return
+			}
+		}
+
+		if (input === null) setInput(lastPressedButton)
+		else setInput(input! + lastPressedButton)
 	}
 
 	function equal() {
