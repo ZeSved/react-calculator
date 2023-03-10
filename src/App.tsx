@@ -11,6 +11,22 @@ function App() {
 
   const buttons: Button[] = [
     {
+      content: 'x²',
+      func: square,
+    },
+    {
+      content: 'xʸ',
+      // func: power,
+    },
+    {
+      content: '←',
+      // func: deleteLast,
+    },
+    {
+      content: '()',
+      // func: parantheses,
+    },
+    {
       content: '1',
     },
     {
@@ -47,18 +63,25 @@ function App() {
       content: '+',
     },
     {
-      content: 'CE',
-      func: clear,
+      content: '+/-',
+      // func: negate,
     },
     {
       content: '0',
+    },
+    {
+      content: '.',
+    },
+    {
+      content: '-',
     },
     {
       content: '=',
       func: equal,
     },
     {
-      content: '-',
+      content: 'CE',
+      func: clear,
     },
   ]
 
@@ -76,13 +99,25 @@ function App() {
   }
 
   function equal() {
-    setInput(input => {
+    setInput(solveExpression())
+
+    function solveExpression() {
       try {
         return Function('return ' + input)()
       } catch (error) {
         return error
       }
-    })
+    }
+  }
+
+  function square() {
+    if (input!.endsWith('**2')) return
+
+    for (const arith of ARITHMETIC_ARR) {
+      if (input!.endsWith(arith)) return
+    }
+
+    setInput(input! + '**2')
   }
 
   function clear() {
