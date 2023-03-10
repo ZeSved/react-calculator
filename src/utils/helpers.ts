@@ -5,3 +5,4 @@ export function arithmeticFunc(ARITHMETIC_ARR: string[], input: string) {
 
   return false
 }
+
