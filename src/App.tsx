@@ -76,15 +76,13 @@ function App() {
   }
 
   function equal() {
-    setInput(solveExpression())
-
-    function solveExpression() {
+    setInput(input => {
       try {
         return Function('return ' + input)()
       } catch (error) {
         return error
       }
-    }
+    })
   }
 
   function clear() {
