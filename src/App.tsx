@@ -1,6 +1,8 @@
 import Buttons, { Button } from './components/Buttons'
 import { MouseEvent, useState } from 'react'
 
+import { square } from './smallersystemfeatures'
+
 import { arithmeticFunc } from './utils/helpers'
 import styles from './App.module.css'
 
@@ -13,13 +15,7 @@ function App() {
 		{
 			content: 'x²',
 			func: () => {
-				if (input!.endsWith('**2')) return
-
-				for (const arith of ARITHMETIC_ARR) {
-					if (input!.endsWith(arith)) return
-				}
-
-				setInput(input! + '**2')
+				if (square(ARITHMETIC_ARR, input!)) setInput(input! + '**2')
 			},
 		},
 		{
