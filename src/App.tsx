@@ -1,15 +1,15 @@
 import Buttons, { Button } from './components/Buttons'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 import { arithmeticFunc, equal, power, square } from './utils/helpers'
 
 import styles from './App.module.css'
 
 const ARITHMETIC_ARR: string[] = ['/', '-', '*', '+']
 const NUMBER_ARR: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-let potency: boolean = false
 
 function App() {
   const [input, setInput] = useState<string | null>('')
+  const inputRef = useRef(null)
 
   const buttons: Button[] = [
     {
@@ -131,11 +131,19 @@ function App() {
     setInput(input + lastPressedButton)
   }
 
+  useEffect(() => {
+    const elem = inputRef.current as HTMLParagraphElement | null
+    if (!elem) return
+    elem.scrollTo({ left: elem.scrollWidth })
+  }, [input, inputRef.current])
+
   return (
     <>
       <main className={styles.wrapper}>
         <div className={styles.calculatorContainer}>
-          <p className={styles.output}>{input ? input : '0'}</p>
+          <p ref={inputRef} className={styles.output}>
+            {input ? input : '0'}
+          </p>
           <Buttons defaultFunction={normalOperation} buttons={buttons} />
         </div>
       </main>
