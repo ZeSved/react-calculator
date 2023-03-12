@@ -1,10 +1,11 @@
 import Buttons, { Button } from './components/Buttons'
 import { MouseEvent, useState } from 'react'
-import { arithmeticFunc, square } from './utils/helpers'
+import { arithmeticFunc, equal, power, square } from './utils/helpers'
 
 import styles from './App.module.css'
 
 const ARITHMETIC_ARR = ['/', '-', '*', '+']
+const NUMBER_ARR = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 function App() {
   const [input, setInput] = useState<string | null>('')
@@ -19,15 +20,23 @@ function App() {
     {
       content: 'xʸ',
       func: () => {
-        return false
+        if (input === null) return false
+
+        if (power(ARITHMETIC_ARR, input, NUMBER_ARR)) setInput(input + '**')
       },
     },
     {
       content: '←',
       func: () => {
         if (input === null) return
-        const inputVar = input.slice(0, -1)
-        setInput(inputVar)
+
+        if (input.endsWith('**2')) {
+          const inputVar = input.slice(0, -3)
+          setInput(inputVar)
+        } else {
+          const inputVar = input.slice(0, -1)
+          setInput(inputVar)
+        }
       },
     },
     {
@@ -86,18 +95,24 @@ function App() {
     {
       content: '=',
       func: () => {
-        setInput(input => {
-          try {
-            return Function('return ' + input)()
-          } catch (error) {
-            return error
-          }
-        })
+        if (input === null) return
+        setInput(equal(input))
       },
     },
     {
       content: 'CE',
       func: () => setInput(null),
+    },
+    {
+      content: 'π',
+      func: () => setInput(input + `${Math.PI}`),
+    },
+    {
+      content: '√',
+      func: () => {
+        if (input === null) return
+        setInput(`${Math.sqrt(parseInt(input))}`)
+      },
     },
   ]
 
