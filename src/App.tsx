@@ -5,6 +5,13 @@ import { arithmeticFunc, equal, power, square } from './utils/helpers'
 import styles from './App.module.css'
 
 const ARITHMETIC_ARR: string[] = ['/', '-', '*', '+']
+const ARITHMETIC_REGEXP = new RegExp(
+  `[${ARITHMETIC_ARR.reduce((previous, current) => {
+    if (current === '-') return `${previous}\\${current}`
+    return previous + current
+  })}]`
+)
+
 const NUMBER_ARR: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 function App() {

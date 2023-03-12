@@ -34,8 +34,11 @@ export function equal(input: string) {
   input = input.replaceAll('²', '**2')
 
   try {
-    return Function('return ' + input)()
+    return Function('return ' + input)().toString()
   } catch (error) {
-    return error
+    console.error(error)
+    if (typeof error === 'object') {
+      return 'An unexpected error occurred!'
+    }
   }
 }
