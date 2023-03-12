@@ -105,8 +105,13 @@ function App() {
 		},
 		{
 			content: 'π',
+			func: () => setInput(input + `${Math.PI}`),
+		},
+		{
+			content: '√',
 			func: () => {
-				setInput(input + `${Math.PI}`)
+				if (input === null) return
+				setInput(`${Math.sqrt(parseInt(input))}`)
 			},
 		},
 	]
@@ -139,12 +144,6 @@ function App() {
 						buttons={buttons}
 					/>
 				</div>
-				<input
-					type='checkbox'
-					name='lightmode'
-					id='lightmode'
-					className={styles.lightmode}
-				/>
 			</main>
 		</>
 	)
