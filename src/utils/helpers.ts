@@ -31,6 +31,8 @@ export function power(ARITHMETIC_ARR: string[], input: string, NUMBER_ARR: strin
 }
 
 export function equal(input: string) {
+  input = input.replaceAll('²', '**2')
+
   try {
     return Function('return ' + input)()
   } catch (error) {

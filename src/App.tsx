@@ -4,8 +4,9 @@ import { arithmeticFunc, square, power, equal } from './utils/helpers'
 
 import styles from './App.module.css'
 
-const ARITHMETIC_ARR = ['/', '-', '*', '+']
-const NUMBER_ARR = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+const ARITHMETIC_ARR: string[] = ['/', '-', '*', '+']
+const NUMBER_ARR: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+let potency: boolean = false
 
 function App() {
 	const [input, setInput] = useState<string | null>('')
@@ -14,7 +15,7 @@ function App() {
 		{
 			content: 'x²',
 			func: () => {
-				if (square(ARITHMETIC_ARR, input)) setInput(input + '**2')
+				if (square(ARITHMETIC_ARR, input)) setInput(input + '²')
 			},
 		},
 		{
@@ -111,6 +112,7 @@ function App() {
 			content: '√',
 			func: () => {
 				if (input === null) return
+
 				setInput(`${Math.sqrt(parseInt(input))}`)
 			},
 		},
