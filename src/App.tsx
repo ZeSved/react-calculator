@@ -18,7 +18,9 @@ function App() {
     },
     {
       content: 'xʸ',
-      // func: power,
+      func: () => {
+        return false
+      },
     },
     {
       content: '←',
