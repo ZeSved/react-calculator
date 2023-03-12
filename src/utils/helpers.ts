@@ -17,3 +17,23 @@ export function square(ARITHMETIC_ARR: string[], input: string | null) {
 
   return true
 }
+
+export function power(ARITHMETIC_ARR: string[], input: string, NUMBER_ARR: string[]) {
+  if (input.endsWith('**')) return false
+
+  if (arithmeticFunc(ARITHMETIC_ARR, input)) return false
+
+  for (const number of NUMBER_ARR) {
+    if (input.endsWith(`**${number}`)) return false
+  }
+
+  return true
+}
+
+export function equal(input: string) {
+  try {
+    return Function('return ' + input)()
+  } catch (error) {
+    return error
+  }
+}
