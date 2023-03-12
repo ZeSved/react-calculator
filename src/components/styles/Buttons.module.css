@@ -1,7 +1,6 @@
 .wrapper {
   --columns: 4;
 
-  width: fit-content;
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 0.5rem;
