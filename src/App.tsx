@@ -103,6 +103,12 @@ function App() {
 			content: 'CE',
 			func: () => setInput(null),
 		},
+		{
+			content: 'π',
+			func: () => {
+				setInput(input + `${Math.PI}`)
+			},
+		},
 	]
 
 	function normalOperation(event: MouseEvent) {
@@ -133,6 +139,12 @@ function App() {
 						buttons={buttons}
 					/>
 				</div>
+				<input
+					type='checkbox'
+					name='lightmode'
+					id='lightmode'
+					className={styles.lightmode}
+				/>
 			</main>
 		</>
 	)

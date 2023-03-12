@@ -7,7 +7,10 @@
   height: 100vh;
   height: 100dvh;
   background-color: #272727;
+}
 
+.wrapper-darkmode {
+  background-color: #dfdfdf;
 }
 
 .calculatorContainer {
@@ -21,6 +24,10 @@
   padding: 1rem;
 }
 
+.calculatorContainer-darkmode {
+  border-color: black;
+}
+
 .output,
 .output:disabled {
   width: 100%;
@@ -31,4 +38,14 @@
   color: white;
   border-radius: 1rem;
   text-align: right;
+}
+
+.output-darkmode,
+.output-darkmode:disabled {
+  border-color: black;
+  color: black;
+}
+
+.lightmode {
+  float: left;
 }
