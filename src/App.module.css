@@ -18,11 +18,13 @@
 
   gap: 1rem;
   padding: 1rem;
+  width: 40rem;
 }
 
 .output,
 .output:disabled {
-  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   font-size: 2rem;
   padding: 1rem 2rem;
   background: none;
@@ -30,4 +32,26 @@
   color: white;
   border-radius: 1rem;
   text-align: right;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(141, 141, 141) transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(141, 141, 141);
+  border-radius: 100vh;
+  border: transparent;
 }

@@ -133,7 +133,7 @@ function App() {
     <>
       <main className={styles.wrapper}>
         <div className={styles.calculatorContainer}>
-          <input value={input ? input : '0'} type="text" disabled className={styles.output} />
+          <p className={styles.output}>{input ? input : '0'}</p>
           <Buttons defaultFunction={normalOperation} buttons={buttons} />
         </div>
       </main>
