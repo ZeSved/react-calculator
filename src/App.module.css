@@ -20,9 +20,10 @@
   padding: 1rem;
 }
 
-.output,
-.output:disabled {
+.output {
   width: 100%;
+  overflow: auto;
+  flex-grow: 0;
   font-size: 2rem;
   padding: 1rem 2rem;
   background: none;
