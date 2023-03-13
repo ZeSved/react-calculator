@@ -11,6 +11,8 @@ export function square(ARITHMETIC_ARR: string[], input: string | null) {
 
   if (input.endsWith('**2')) return false
 
+  if (input.endsWith('²')) return false
+
   for (const arith of ARITHMETIC_ARR) {
     if (input.endsWith(arith)) return false
   }
